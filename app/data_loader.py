@@ -1,11 +1,13 @@
 import json
+import os
 from app.shop import Shop
 from app.customer import Customer
 from app.car import Car
 
 
 def load_data() -> dict:
-    data = json.loads(open("app/config.json").read())
+    config_path = os.path.join("app", "config.json")
+    data = json.loads(open(config_path).read())
     customers = []
     shops = []
     for customer in data["customers"]:

@@ -8,7 +8,7 @@ from app.shop import Shop
 @dataclass
 class Customer:
     name: str
-    products_cart: dict
+    product_cart: dict
     location: list
     money: int | float
     car: Car
@@ -20,7 +20,7 @@ class Customer:
     def total_cost_of_products(self, shop: dict) -> float | int :
         total_cost_of_products = 0
         for item in ["bread", "milk", "butter"]:
-            total_cost_of_products += self.products_cart[item] * shop[item]
+            total_cost_of_products += self.product_cart[item] * shop[item]
         return total_cost_of_products
 
     def print_receipt(self, shop: Shop) -> None:
@@ -28,8 +28,8 @@ class Customer:
         print(f"Thanks, {self.name}, for your purchase!")
         print("You have bought:")
         for product, quantity in shop.products.items():
-            cost = quantity * self.products_cart[product]
-            print(f"{self.products_cart[product]} {product}s for {self.format_price(cost)} dollars")
+            cost = quantity * self.product_cart[product]
+            print(f"{self.product_cart[product]} {product}s for {self.format_price(cost)} dollars")
         print(f"Total cost is {self.total_cost_of_products(shop.products)} dollars")
         print("See you again!\n")
 

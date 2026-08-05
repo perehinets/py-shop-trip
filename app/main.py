@@ -12,15 +12,16 @@ def shop_trip() -> None:
         print(f"{client.name} has {client.money} dollars")
         for shop in shops:
             distance = client.distance_trip(client.location, shop.location)
-            total_cost = round(client.total_cost_of_products(shop.products) + (client.car.total_cost_of_fuel(distance, fuel_price) * 2), 2)
+            total_cost = client.total_cost_of_products(shop.products) + (client.car.total_cost_of_fuel(distance, fuel_price) * 2)
             total_spent_of_trip.append(total_cost)
-            print(f"{client.name}'s trip to the {shop.name} costs {total_cost}")
+            print(f"{client.name}'s trip to the {shop.name} costs {round(total_cost, 2)}")
 
         min_cost = min(total_spent_of_trip)
         key = total_spent_of_trip.index(min_cost)
 
         if client.money >= min_cost:
             print(f"{client.name} rides to {shops[key].name}\n")
+            client.locaton = shops[key].location
             client.print_receipt(shops[key])
             print(f"{client.name} rides home")
             print(f"{client.name} now has {round(client.money - min_cost, 2)} dollars\n")
