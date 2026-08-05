@@ -25,4 +25,4 @@ def shop_trip() -> None:
             print(f"{client.name} rides home")
             print(f"{client.name} now has {round(client.money - min_cost, 2)} dollars\n")
         else:
-            print(f"{client.name} doesn't have enough money to make a purchase in any shop\n")
+            print(f"{client.name} doesn't have enough money to make a purchase in any shop")
