@@ -27,10 +27,10 @@ class Customer:
         print(f"Date: {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         print(f"Thanks, {self.name}, for your purchase!")
         print("You have bought:")
-        for product, quantity in shop.products.items():
-            cost = quantity * self.product_cart[product]
+        for product, quantity in self.product_cart.items():
+            cost = quantity * shop.products[product]
             print(f"{self.product_cart[product]} {product}s for {self.format_price(cost)} dollars")
-        print(f"Total cost is {self.total_cost_of_products(shop.products)} dollars")
+        print(f"Total cost is {self.format_price(self.total_cost_of_products(shop.products))} dollars")
         print("See you again!\n")
 
     @staticmethod
