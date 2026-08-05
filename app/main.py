@@ -21,9 +21,10 @@ def shop_trip() -> None:
 
         if client.money >= min_cost:
             print(f"{client.name} rides to {shops[key].name}\n")
-            client.locaton = shops[key].location
+            client.location = shops[key].location
             client.print_receipt(shops[key])
+            client.money -= min_cost
             print(f"{client.name} rides home")
-            print(f"{client.name} now has {round(client.money - min_cost, 2)} dollars\n")
+            print(f"{client.name} now has {round(client.money, 2)} dollars\n")
         else:
             print(f"{client.name} doesn't have enough money to make a purchase in any shop")

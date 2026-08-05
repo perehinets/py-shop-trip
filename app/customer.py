@@ -19,8 +19,8 @@ class Customer:
 
     def total_cost_of_products(self, shop: dict) -> float | int :
         total_cost_of_products = 0
-        for item in ["bread", "milk", "butter"]:
-            total_cost_of_products += self.product_cart[item] * shop[item]
+        for key, item in self.product_cart.items():
+            total_cost_of_products += self.product_cart[key] * shop[key]
         return total_cost_of_products
 
     def print_receipt(self, shop: Shop) -> None:

@@ -7,7 +7,8 @@ from app.car import Car
 
 def load_data() -> dict:
     config_path = os.path.join("app", "config.json")
-    data = json.loads(open(config_path).read())
+    with open(config_path, "r") as file:
+        data = json.load(file)
     customers = []
     shops = []
     for customer in data["customers"]:
